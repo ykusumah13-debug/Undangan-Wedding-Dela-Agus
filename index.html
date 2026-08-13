@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#29451f">
+<title>Dela & Agus | Undangan Pernikahan</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbf7ed;color:#463a27;font-family:Arial,sans-serif;line-height:1.65}
+h1,h2,h3{font-family:Georgia,serif}
+h1{font-size:clamp(58px,13vw,100px);line-height:.9;margin:15px 0}
+h2{font-size:clamp(38px,8vw,58px);line-height:1.05;margin:10px 0 28px}
+h3{font-size:28px;margin:8px 0}
+.center{text-align:center}.gold{color:#c9a65f}
+.eyebrow{font-size:11px;letter-spacing:4px;font-weight:bold;color:#4d6d39}
+.arabic{font-size:25px}
+.btn{display:inline-block;border:0;border-radius:50px;padding:13px 25px;background:linear-gradient(135deg,#c9a65f,#4b6c37);color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;box-shadow:0 10px 25px #263c1835}
+
+#cover{
+min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;
+padding:22px;color:white;text-align:center;
+background:linear-gradient(#20391766,#172b0dca),url("assets/anime-islami.png") center/cover no-repeat;
+}
+.cover-box{width:min(700px,100%);padding:38px 24px;border:1px solid #fff8;border-radius:30px;background:#ffffff20;backdrop-filter:blur(9px);box-shadow:0 25px 80px #0005}
+.cover-date{letter-spacing:4px}.guest{margin:28px 0}
+
+#website{display:none}
+.music-control{
+position:fixed;right:15px;top:15px;z-index:1001;width:52px;height:52px;border-radius:50%;
+border:1px solid #d0b477;background:#fffdf5;color:#496a35;box-shadow:0 10px 30px #0002;cursor:pointer;font-size:19px
+}
+.music-label{
+position:fixed;right:15px;top:72px;z-index:1000;background:#fffdf5;border:1px solid #d0b477;
+border-radius:20px;padding:5px 10px;font-size:10px;color:#496a35;display:none
+}
+
+.hero{
+min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:70px 20px;
+background:linear-gradient(#20391755,#203917c9),url("assets/anime-islami.png") center/cover no-repeat
+}
+.hero-date{display:inline-block;padding:10px 22px;border:1px solid #fff9;border-radius:50px;margin-top:20px}
+section{padding:75px 0}.container{width:min(1000px,92%);margin:auto}
+.card{background:#fffdf8;border:1px solid #dfcda5;border-radius:24px;padding:28px;box-shadow:0 18px 45px #6d532315}
+.soft{background:#f1e7d2}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.time{border:1px solid #decba1;border-radius:16px;padding:13px 5px;text-align:center}
+.time b{display:block;font:48px Georgia,serif;color:#4d6c38}.time span{font-size:10px;letter-spacing:2px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.person{text-align:center}
+.photo{width:210px;height:265px;max-width:100%;margin:auto;border-radius:110px 110px 25px 25px;border:6px solid #fff9ef;background:url("assets/anime-islami.png") center/cover;box-shadow:0 15px 35px #59431e22}
+.parents{font-size:14px;color:#756c5c}.quote{text-align:center}.quote p{max-width:780px;margin:12px auto}
+.event{text-align:center}.event-icon{font-size:40px;color:#c9a65f}.address{text-align:center;margin-top:22px}
+.gallery img{display:block;width:100%;border-radius:22px;border:1px solid #d7c08c}
+.story{max-width:780px;margin:auto;text-align:center}
+form{width:min(560px,100%);margin:20px auto;display:grid;gap:12px}
+input,select{width:100%;padding:14px;border:1px solid #d6c7aa;border-radius:12px;background:#fff;font:inherit;color:#463a27}
+.account{font:38px Georgia,serif;letter-spacing:2px;color:#4d6c38}
+footer{background:#263e1d;color:#fff;text-align:center;padding:75px 20px 110px}
+footer h2,footer h3{color:#e0c477}
+.nav{
+position:fixed;z-index:1000;bottom:10px;left:50%;transform:translateX(-50%);width:min(760px,94%);
+display:flex;justify-content:space-around;background:#fffdf5f2;border:1px solid #d6c08c;border-radius:50px;padding:7px;box-shadow:0 10px 35px #4d3b1b2c
+}
+.nav a{flex:1;text-align:center;text-decoration:none;color:#493b26;font-size:10px;padding:3px}
+.nav span{display:block;font-size:17px;line-height:1.1}
+.fade{opacity:0;transform:translateY(22px);transition:.8s ease}.fade.show{opacity:1;transform:none}
+.petal{position:fixed;top:-20px;z-index:900;pointer-events:none;color:#d2ac63;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@media(max-width:680px){
+section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-columns:repeat(2,1fr)}
+.time b{font-size:42px}.card{padding:22px 16px}.nav a{font-size:9px}.nav span{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<section id="cover">
+<div class="cover-box">
+<div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+<p>Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+<p>Dengan memohon rahmat dan ridho Allah SWT,<br>kami bermaksud mengundang Bapak/Ibu/Saudara/i<br>pada acara pernikahan kami.</p>
+<div class="gold">✦</div>
+<h1>Dela & Agus</h1>
+<p class="cover-date">06 · 09 · 2026</p>
+<div class="guest">Kepada Yth.<br><strong id="guestName">Tamu Undangan</strong></div>
+<button class="btn" id="openInvitation" type="button">♡ &nbsp; Buka Undangan</button>
+</div>
+</section>
+
+<div id="website">
+<button class="music-control" id="musicButton" type="button" aria-label="Musik">♫</button>
+<div class="music-label" id="musicLabel">Istikharah Cinta</div>
+
+<section class="hero" id="home">
+<div>
+<div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+<p class="eyebrow" style="color:#f0d89d">THE WEDDING OF</p>
+<h1>Dela & Agus</h1>
+<p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
+<div class="hero-date">Minggu, 06 September 2026</div>
+</div>
+</section>
+
+<section class="fade">
+<div class="container card center">
+<p class="eyebrow">MENUJU HARI BAHAGIA</p><h2>Counting Down</h2>
+<div class="countdown">
+<div class="time"><b id="days">0</b><span>HARI</span></div>
+<div class="time"><b id="hours">0</b><span>JAM</span></div>
+<div class="time"><b id="minutes">0</b><span>MENIT</span></div>
+<div class="time"><b id="seconds">0</b><span>DETIK</span></div>
+</div>
+</div>
+</section>
+
+<section class="fade" id="mempelai">
+<div class="container">
+<p class="eyebrow center">THE HAPPY COUPLE</p><h2>Mempelai</h2>
+<div class="grid">
+<div class="card person"><div class="photo"></div><h3>Dela Puspita</h3><p class="parents">Putri dari<br><b>Bp. Budiman</b> dan <b>Almh. Ibu Neni</b></p></div>
+<div class="card person"><div class="photo"></div><h3>Agus Setiawan</h3><p class="parents">Putra dari<br><b>Bp. Dadan</b> dan <b>Ibu Siti Jajilah</b></p></div>
+</div>
+</div>
+</section>
+
+<section class="soft quote fade">
+<div class="container">
+<div class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا</div>
+<p>“Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya.”</p>
+<b>QS. Ar-Rum : 21</b>
+</div>
+</section>
+
+<section class="fade" id="acara">
+<div class="container">
+<p class="eyebrow center">SAVE THE DATE</p><h2>Acara</h2>
+<div class="grid">
+<div class="card event"><div class="event-icon">♡</div><h3>Akad Nikah</h3><p><b>Minggu, 06 September 2026</b><br>Pukul 08:30 WIB</p></div>
+<div class="card event"><div class="event-icon">✦</div><h3>Resepsi</h3><p><b>Minggu, 06 September 2026</b><br>Pukul 09:00 WIB – Selesai</p></div>
+</div>
+<div class="card address">
+<h3>Alamat Akad & Resepsi</h3>
+<p>Kp. Salakawung RT. 001, RW 001,<br>Desa Sarampad, Kec. Cugenang,<br>Kab. Cianjur, Jawa Barat</p>
+<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kp.+Salakawung+RT.+001+RW+001+Desa+Sarampad+Kec.+Cugenang+Kab.+Cianjur+Jawa+Barat">📍 Buka Google Maps</a>
+</div>
+</div>
+</section>
+
+<section class="soft fade gallery" id="galeri">
+<div class="container"><p class="eyebrow center">OUR MOMENTS</p><h2>Galeri Anime Islami</h2>
+<img src="assets/anime-islami.png" alt="Ilustrasi Anime Islami Dela dan Agus"></div>
+</section>
+
+<section class="fade">
+<div class="container card story"><p class="eyebrow">OUR STORY</p><h2>Love Story</h2>
+<p>Dengan doa dan restu keluarga, Dela dan Agus melangkah menuju babak baru kehidupan bersama.</p>
+<p>Semoga pernikahan ini menjadi perjalanan yang penuh kasih, keberkahan, kebahagiaan, dan ketenteraman.</p>
+<div class="gold" style="font-size:28px">❦</div></div>
+</section>
+
+<section class="soft fade" id="rsvp">
+<div class="container"><p class="eyebrow center">KINDLY RSVP</p><h2>Konfirmasi Kehadiran</h2>
+<form id="rsvpForm">
+<input id="rsvpName" type="text" placeholder="Nama Anda" required>
+<select id="rsvpStatus" required><option value="">Pilih kehadiran</option><option value="Hadir">Hadir</option><option value="Tidak hadir">Tidak hadir</option></select>
+<input id="guestCount" type="number" min="1" max="10" value="1" required>
+<button class="btn" type="submit">💬 Konfirmasi via WhatsApp</button>
+</form>
+<p class="center">WhatsApp: 0895600922060</p></div>
+</section>
+
+<section class="fade" id="hadiah">
+<div class="container card center"><p class="eyebrow">WEDDING GIFT</p><h2>Hadiah Pernikahan</h2>
+<p><b>DANA</b></p><div class="account" id="danaNumber">0895600922060</div><p>a.n. Dela / Agus</p>
+<button class="btn" id="copyDana" type="button">Salin Nomor</button></div>
+</section>
+
+<footer>
+<div class="arabic">جَزَاكُمُ اللَّهُ خَيْرًا</div><h2>Terima Kasih</h2>
+<p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa serta restu.</p>
+<p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p><h3>Dela & Agus</h3>
+</footer>
+
+<nav class="nav">
+<a href="#home"><span>⌂</span>Home</a><a href="#mempelai"><span>♡</span>Mempelai</a>
+<a href="#acara"><span>▣</span>Acara</a><a href="#galeri"><span>▧</span>Galeri</a>
+<a href="#rsvp"><span>♥</span>RSVP</a><a href="#hadiah"><span>🎁</span>Hadiah</a>
+</nav>
+
+<audio id="weddingMusic" loop preload="auto">
+<source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<script>
+(function(){
+"use strict";
+var cover=document.getElementById("cover"), website=document.getElementById("website");
+var openBtn=document.getElementById("openInvitation"), music=document.getElementById("weddingMusic");
+var musicBtn=document.getElementById("musicButton"), musicLabel=document.getElementById("musicLabel");
+
+var q=new URLSearchParams(window.location.search).get("to");
+if(q)document.getElementById("guestName").textContent=q;
+
+function playMusic(){
+var p=music.play();
+if(p&&p.then)p.then(function(){musicBtn.textContent="❚❚";musicLabel.style.display="block";})
+.catch(function(){musicBtn.textContent="♫";});
+}
+openBtn.addEventListener("click",function(){
+cover.style.display="none";website.style.display="block";window.scrollTo(0,0);playMusic();
+});
+musicBtn.addEventListener("click",function(){
+if(music.paused){playMusic();}else{music.pause();musicBtn.textContent="♫";}
+});
+
+var target=new Date("2026-09-06T08:30:00+07:00").getTime();
+function countdown(){
+var x=Math.max(0,target-Date.now());
+document.getElementById("days").textContent=Math.floor(x/86400000);
+document.getElementById("hours").textContent=Math.floor(x%86400000/3600000);
+document.getElementById("minutes").textContent=Math.floor(x%3600000/60000);
+document.getElementById("seconds").textContent=Math.floor(x%60000/1000);
+}
+countdown();setInterval(countdown,1000);
+
+document.getElementById("rsvpForm").addEventListener("submit",function(e){
+e.preventDefault();
+var name=document.getElementById("rsvpName").value,status=document.getElementById("rsvpStatus").value,count=document.getElementById("guestCount").value;
+var msg="Assalamu'alaikum Dela & Agus,%0A%0ASaya "+encodeURIComponent(name)+" mengonfirmasi kehadiran.%0AStatus: "+encodeURIComponent(status)+"%0AJumlah tamu: "+encodeURIComponent(count)+" orang.";
+window.open("https://wa.me/62895600922060?text="+msg,"_blank");
+});
+
+document.getElementById("copyDana").addEventListener("click",function(){
+var n="0895600922060",b=this;
+if(navigator.clipboard){navigator.clipboard.writeText(n).then(function(){b.textContent="✓ Berhasil Disalin";setTimeout(function(){b.textContent="Salin Nomor"},1800);}).catch(function(){window.prompt("Nomor DANA:",n);});}
+else window.prompt("Nomor DANA:",n);
+});
+
+if("IntersectionObserver"in window){
+var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("show");});},{threshold:.1});
+document.querySelectorAll(".fade").forEach(function(e){ob.observe(e);});
+}else document.querySelectorAll(".fade").forEach(function(e){e.classList.add("show");});
+
+setInterval(function(){
+if(website.style.display==="none")return;
+var p=document.createElement("span");p.className="petal";p.textContent=Math.random()>.5?"✦":"❧";
+p.style.left=Math.random()*100+"vw";p.style.fontSize=(8+Math.random()*12)+"px";
+p.style.animationDuration=(5+Math.random()*6)+"s";document.body.appendChild(p);
+setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},12000);
+},800);
+})();
+</script>
+</body>
+</html>
