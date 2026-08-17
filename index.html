@@ -177,52 +177,21 @@ section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-
 <button class="btn" id="copyDana" type="button">Salin Nomor</button></div>
 </section>
 
-<section class="fade" id="ucapan">
-                <div class="section-subtitle">Buku Tamu</div>
-                <div class="section-title">Ucapan & Doa</div>
-                <form class="wishes-form" onsubmit="submitWish(event)">
-                    <input type="text" id="guestName" class="form-control" placeholder="Nama Anda" required>
-                    <select id="attendance" class="form-control">
-                        <option value="Hadir">Hadir</option>
-                        <option value="Ragu">Masih Ragu</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                    </select>
-                    <textarea id="guestMessage" class="form-control" placeholder="Ucapan & Doa" required></textarea>
-                    <button type="submit" class="btn-submit">Kirim Ucapan</button>
-                </form>
-                <div id="wishesList"></div>
-            </section>
-        </main>
 
-        <div id="toast" class="toast">Berhasil disalin!</div>
-
-        <nav class="bottom-nav">
-            <a href="#home" class="nav-item"><i class="fa-solid fa-house"></i>Home</a>
-            <a href="#mempelai" class="nav-item"><i class="fa-solid fa-heart"></i>Mempelai</a>
-            <a href="#acara" class="nav-item"><i class="fa-solid fa-calendar-days"></i>Acara</a>
-            <a href="#kado" class="nav-item"><i class="fa-solid fa-gift"></i>Kado</a>
-            <a href="#ucapan" class="nav-item"><i class="fa-solid fa-comments"></i>Ucapan</a>
-        </nav>
-    </div>
-
-    <script>
-        function openInvitation() { document.getElementById('cover').classList.add('opened'); document.getElementById('bgAudio').play(); }
-        function toggleMusic() { const a = document.getElementById('bgAudio'); a.paused ? a.play() : a.pause(); }
-        function copyToClipboard(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); showToast("Berhasil disalin!"); }
-        function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
-        function submitWish(e) {
-            e.preventDefault();
-            const n = document.getElementById('guestName').value;
-            const m = document.getElementById('guestMessage').value;
-            const card = document.createElement('div');
-            card.className = 'wish-card';
-            card.innerHTML = `<strong>${n}</strong><p>${m}</p>`;
-            document.getElementById('wishesList').prepend(card);
-            document.getElementById('guestMessage').value = '';
-        }
-    </script>
-</body>
-</html>
+  <section id="ucapan" class="rsvp reveal">
+  <div class="container narrow">
+    <p class="eyebrow center">WEDDING WISHES</p>
+    <h2 class="center">Ucapan Pernikahan</h2>
+    <p class="center">Sampaikan doa dan ucapan terbaik untuk Dela & Agus.</p>
+    <form id="wishForm">
+      <input id="wishName" type="text" placeholder="Nama Anda" required>
+      <textarea id="wishMessage" placeholder="Tulis ucapan dan doa..." rows="5" required
+        style="padding:14px 16px;border:1px solid #d7ccb4;border-radius:12px;background:white;outline:none;font:inherit;color:var(--brown);resize:vertical"></textarea>
+      <button class="btn" type="submit">💌 Kirim Ucapan</button>
+    </form>
+    <div id="wishesList" style="display:grid;gap:12px;margin-top:25px"></div>
+  </div>
+</section>
   
 <footer>
 <div class="arabic">جَزَاكُمُ اللَّهُ خَيْرًا</div><h2>Terima Kasih</h2>
