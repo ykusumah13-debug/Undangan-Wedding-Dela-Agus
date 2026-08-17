@@ -178,20 +178,54 @@ section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-
 </section>
 
 
-  <section id="ucapan" class="rsvp reveal">
+<section id="ucapan" class="rsvp reveal">
   <div class="container narrow">
     <p class="eyebrow center">WEDDING WISHES</p>
     <h2 class="center">Ucapan Pernikahan</h2>
     <p class="center">Sampaikan doa dan ucapan terbaik untuk Dela & Agus.</p>
+    
+    <!-- FORM UCAPAN -->
     <form id="wishForm">
-      <input id="wishName" type="text" placeholder="Nama Anda" required>
+      <input id="wishName" type="text" placeholder="Nama Anda" required 
+             style="width: 100%; padding:14px 16px; border:1px solid #d7ccb4; border-radius:12px; background:white; outline:none; font:inherit; color:var(--brown); margin-bottom:12px; box-sizing: border-box;">
+      
       <textarea id="wishMessage" placeholder="Tulis ucapan dan doa..." rows="5" required
-        style="padding:14px 16px;border:1px solid #d7ccb4;border-radius:12px;background:white;outline:none;font:inherit;color:var(--brown);resize:vertical"></textarea>
-      <button class="btn" type="submit">💌 Kirim Ucapan</button>
+                style="width: 100%; padding:14px 16px; border:1px solid #d7ccb4; border-radius:12px; background:white; outline:none; font:inherit; color:var(--brown); resize:vertical; box-sizing: border-box;"></textarea>
+      
+      <button class="btn" type="submit" style="margin-top: 10px; cursor: pointer;">💌 Kirim Ucapan</button>
     </form>
-    <div id="wishesList" style="display:grid;gap:12px;margin-top:25px"></div>
+
+    <!-- WADAH TAMPILAN UCAPAN -->
+    <div id="wishesList" style="display:grid; gap:12px; margin-top:25px;"></div>
   </div>
 </section>
+
+<!-- SCRIPT JAVASCRIPT UNTUK MENAMPILKAN UCAPAN -->
+<script>
+  document.getElementById('wishForm').addEventListener('submit', function(event) {
+    // 1. Mencegah halaman reload/refresh
+    event.preventDefault();
+
+    // 2. Ambil nilai input
+    const name = document.getElementById('wishName').value;
+    const message = document.getElementById('wishMessage').value;
+    const wishesList = document.getElementById('wishesList');
+
+    // 3. Buat kotak ucapan baru
+    const newWish = document.createElement('div');
+    newWish.style.cssText = "background: #fdfbf7; padding: 14px 16px; border-radius: 12px; border: 1px solid #d7ccb4; text-align: left;";
+    newWish.innerHTML = `
+      <strong style="color: var(--brown, #8b5a2b); font-size: 1.05em;">${name}</strong>
+      <p style="margin: 6px 0 0 0; color: #4a4a4a; line-height: 1.4;">${message}</p>
+    `;
+
+    // 4. Masukkan ucapan baru ke paling atas daftar
+    wishesList.prepend(newWish);
+
+    // 5. Bersihkan form input setelah kirim
+    this.reset();
+  });
+</script>
   
 <footer>
 <div class="arabic">جَزَاكُمُ اللَّهُ خَيْرًا</div><h2>Terima Kasih</h2>
