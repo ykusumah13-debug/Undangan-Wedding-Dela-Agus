@@ -196,10 +196,17 @@ section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-
     </form>
 
     <!-- WADAH TAMPILAN UCAPAN -->
-    <div id="wishesList" style="display:grid; gap:12px; margin-top:25px;">
-      <p style="text-align: center; color: #888;">Memuat ucapan...</p>
-    </div>
-  </div>
+    <div id="wishesList" style="
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+  max-height: 350px; /* Batas tinggi kotak (bisa disesuaikan, misal 300px atau 400px) */
+  overflow-y: auto;  /* Mengaktifkan scrollbar vertikal jika isi melebihi batas tinggi */
+  padding-right: 6px; /* Memberikan sedikit ruang agar teks tidak tertutup scrollbar */
+">
+  <p style="text-align: center; color: #888;">Memuat ucapan...</p>
+</div>
 </section>
 
 <script>
