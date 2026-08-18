@@ -196,7 +196,24 @@ section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-
     </form>
 
     <!-- WADAH TAMPILAN UCAPAN -->
-    <div id="wishesList" style="
+    <div id="wishesList" style="/* Mengatur tampilan scrollbar pada kotak ucapan */
+#wishesList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#wishesList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#wishesList::-webkit-scrollbar-thumb {
+  background: #d7ccb4; /* Warna scrollbar disesuaikan dengan tema undangan */
+  border-radius: 10px;
+}
+
+#wishesList::-webkit-scrollbar-thumb:hover {
+  background: var(--brown, #8b5a2b);
+}
   display: flex;
   flex-direction: column;
   gap: 12px;
