@@ -192,40 +192,109 @@ section{padding:60px 0}.grid{grid-template-columns:1fr}.countdown{grid-template-
       <textarea id="wishMessage" placeholder="Tulis ucapan dan doa..." rows="5" required
                 style="width: 100%; padding:14px 16px; border:1px solid #d7ccb4; border-radius:12px; background:white; outline:none; font:inherit; color:var(--brown); resize:vertical; box-sizing: border-box;"></textarea>
       
-      <button class="btn" type="submit" style="margin-top: 10px; cursor: pointer;">💌 Kirim Ucapan</button>
+      <button id="submitBtn" class="btn" type="submit" style="margin-top: 10px; cursor: pointer;">💌 Kirim Ucapan</button>
     </form>
 
     <!-- WADAH TAMPILAN UCAPAN -->
-    <div id="wishesList" style="display:grid; gap:12px; margin-top:25px;"></div>
+    <div id="wishesList" style="display:grid; gap:12px; margin-top:25px;">
+      <p style="text-align: center; color: #888;">Memuat ucapan...</p>
+    </div>
   </div>
 </section>
 
-<!-- SCRIPT JAVASCRIPT UNTUK MENAMPILKAN UCAPAN -->
 <script>
-  document.getElementById('wishForm').addEventListener('submit', function(event) {
-    // 1. Mencegah halaman reload/refresh
-    event.preventDefault();
+  // PASTAKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYMLjhRChf0FTMUanFmRT70mqFIABwXJdyyTnvbTmVOop-w1iLKxak8OEndCFFqjN75g/exec";
 
-    // 2. Ambil nilai input
-    const name = document.getElementById('wishName').value;
-    const message = document.getElementById('wishMessage').value;
-    const wishesList = document.getElementById('wishesList');
+  const wishForm = document.getElementById('wishForm');
+  const wishesList = document.getElementById('wishesList');
+  const submitBtn = document.getElementById('submitBtn');
 
-    // 3. Buat kotak ucapan baru
-    const newWish = document.createElement('div');
-    newWish.style.cssText = "background: #fdfbf7; padding: 14px 16px; border-radius: 12px; border: 1px solid #d7ccb4; text-align: left;";
-    newWish.innerHTML = `
-      <strong style="color: var(--brown, #8b5a2b); font-size: 1.05em;">${name}</strong>
-      <p style="margin: 6px 0 0 0; color: #4a4a4a; line-height: 1.4;">${message}</p>
+  // 1. FUNGSI UNTUK MENGAMBIL DAN MENAMPILKAN UCAPAN DARI GOOGLE SHEETS
+  function loadWishes() {
+    fetch(SCRIPT_URL)
+      .then(response => response.json())
+      .then(data => {
+        wishesList.innerHTML = ""; // Bersihkan teks loading
+
+        if (data.length === 0) {
+          wishesList.innerHTML = "<p style='text-align:center; color:#888;'>Belum ada ucapan. Jadilah yang pertama!</p>";
+          return;
+        }
+
+        // Tampilkan ucapan dari yang terbaru (dibalik urutannya)
+        data.reverse().forEach(item => {
+          renderWishCard(item.name, item.message);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        wishesList.innerHTML = "<p style='text-align:center; color:red;'>Gagal memuat ucapan.</p>";
+      });
+  }
+
+  // Helper untuk membuat elemen HTML ucapan
+  function renderWishCard(name, message, prepend = false) {
+    const card = document.createElement('div');
+    card.style.cssText = "background: #fdfbf7; padding: 14px 16px; border-radius: 12px; border: 1px solid #d7ccb4; text-align: left;";
+    card.innerHTML = `
+      <strong style="color: var(--brown, #8b5a2b); font-size: 1.05em;">${escapeHTML(name)}</strong>
+      <p style="margin: 6px 0 0 0; color: #4a4a4a; line-height: 1.4;">${escapeHTML(message)}</p>
     `;
 
-    // 4. Masukkan ucapan baru ke paling atas daftar
-    wishesList.prepend(newWish);
+    if (prepend) {
+      wishesList.prepend(card);
+    } else {
+      wishesList.appendChild(card);
+    }
+  }
 
-    // 5. Bersihkan form input setelah kirim
-    this.reset();
+  // 2. FUNGSI UNTUK MENGIRIM UCAPAN BARU KE GOOGLE SHEETS
+  wishForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('wishName').value;
+    const message = document.getElementById('wishMessage').value;
+
+    // Ubah status tombol saat mengirim
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Mengirim...";
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ name: name, message: message })
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.status === 'success') {
+        // Tampilkan ucapan langsung ke layar tanpa perlu reload
+        renderWishCard(name, message, true);
+        wishForm.reset();
+      } else {
+        alert("Gagal mengirim ucapan, silakan coba lagi.");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert("Terjadi kesalahan koneksi.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "💌 Kirim Ucapan";
+    });
   });
+
+  // Mencegah XSS Injection
+  function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+  }
+
+  // Panggil fungsi saat halaman pertama kali dibuka
+  loadWishes();
 </script>
+
   
 <footer>
 <div class="arabic">جَزَاكُمُ اللَّهُ خَيْرًا</div><h2>Terima Kasih</h2>
